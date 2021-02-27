@@ -17,7 +17,7 @@ const paymentRoutes = require("./routes/paymentRoute")
 
 
 //DB connection:
-mongoose.connect("mongodb+srv://rohan:rohan@cluster0.9lvol.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
+mongoose.connect(process.env.DATABASE,{
   useNewUrlParser : true,
    useUnifiedTopology: true,
   useCreateIndex : true
