@@ -1,4 +1,8 @@
 const {Order} = require("../models/order");
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+
 
 //params to get id of prouct and name and price from product model
 exports.getOrderById = (req, res, next, id) => {
@@ -29,9 +33,23 @@ exports.createOrder = (req, res) => {
       res.status(400).json({
         error: "Error creating new order"
       })
+    }else{
+
+      client.messages
+        .create({
+          body: `Hello ${order.user.name}, You have succesfully placed order on teesstore with order id ${order._id}, your transc ID is ${order.transaction_id}. You bought ${order.products.length}items worth ${order.amount}. thank you for shopping with us. visit again.`,
+          from: `+18722446154`,
+          to: `+91${order.user.contact}`
+        }).then(response => {
+          console.log(response)
+        }).catch(err => {
+          console.log(err)
+        })
+
+
+      console.log("order created succesfully", order)
+      res.json(order)
     }
-    console.log("order created succesfully", order)
-    res.json(order)
   })
 }
 

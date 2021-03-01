@@ -14,7 +14,10 @@ router.post("/signup", [
     .withMessage("Email is required"),
   check('password')
     .isLength({min : 3})
-    .withMessage("Password should be at least 3 char long")
+    .withMessage("Password should be at least 3 char long"),
+  check('contact')
+    .isLength({min : 10})
+    .withMessage("Contact must be at least 10 digit long")
 ], signup)
 
 //Read - This one helps user to sign in

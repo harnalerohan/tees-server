@@ -1,4 +1,7 @@
 const braintree = require("braintree");
+const stripe = require("stripe")("sk_test_51IQ8VRFl5Qot5v8Ktwq7oYac3EkQSPm7ll1n7jKQJh99hGifhGybark6vtC8kVAg1xx8TYL1nhk2u88m31gO90PM00JaUAVPxw");
+const {v4: uuidv4} = require("uuid")
+
 
 
 const gateway = new braintree.BraintreeGateway({

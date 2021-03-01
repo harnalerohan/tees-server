@@ -27,7 +27,7 @@ var userSchema = new mongoose.Schema({
   },
   contact: {
     type: Number,
-    default: +911234567890
+    required: true
   },
   //TODO : come back here
   encry_password : {

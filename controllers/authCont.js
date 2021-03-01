@@ -25,6 +25,7 @@ exports.signup = (req, res) => {
     res.json({
       name: user.name,
       email:user.email,
+      contact:user.contact,
       id: user._id
     })
   })
@@ -32,7 +33,8 @@ exports.signup = (req, res) => {
 
 //Read - This one helps user to sign in
 exports.signin = (req, res) => {
-  const {email, password} = req.body
+
+  const {email, password, contact} = req.body
 
   const gotError = validationResult(req)
 
@@ -63,11 +65,11 @@ exports.signin = (req, res) => {
 
     //send response to front end..
 
-    const {_id, name, email, role} = user
+    const {_id, name, email, role, contact} = user
 
     return res.json({
       token, 
-      user: {_id, name, email, role}
+      user: {_id, name, email, role, contact}
     })
   })
 }
