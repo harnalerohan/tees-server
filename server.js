@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
+var Parse = require('parse/node');
 
 //My routes
 const authRoutes = require("./routes/authRoute");
@@ -29,6 +30,9 @@ mongoose.connect(process.env.DATABASE,{
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
+
+Parse.initialize("n71OygLkOAu8IwTbCBpJKqJa2sMnX3R1XmxOOxPf","Msh0hbTYKuRnaShbrMebZhReOoIInUjZjSRru47V"); 
+Parse.serverURL = 'https://parseapi.back4app.com/'
 
 //My Routes: 
 app.use("/api", authRoutes)
