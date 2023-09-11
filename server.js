@@ -47,8 +47,18 @@ app.use("/api", paymentRoutes)
 //SET STATIC FOLDER
 app.use(express.static('client/build'));
 
-app.get("/rohan", (req, res) => {
 
+app.get("/", (req, res) => {
+  res.json({
+    status: 200,
+    message: 'at root route'
+  })
+})
+app.get("/test", (req, res) => {
+res.json({
+  status: 200,
+  message: 'api is working'
+})
 })
 
 // app.get('*', (req, res) => {
